@@ -1,19 +1,33 @@
-import React from 'react';
-import { View, Text, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StatusBar, StyleSheet, TouchableOpacity, TouchableOpacityProps, GestureResponderEvent } from 'react-native';
 
-export function Header() {
+interface HeaderProps {
+  onDarkMode: (darkMode: boolean) => void;
+  darkModeState: boolean;
+}
+
+export function Header({ onDarkMode, darkModeState }: HeaderProps) {
+  const [styles, setStyles] = useState(stylesLigth);
+  const [darkMode, setDarkMode] = useState(darkModeState);
+
+  function handleDarkMode() {
+    onDarkMode(!darkMode);
+    setDarkMode(!darkMode);
+    setStyles(darkMode ? stylesDark : stylesLigth);
+  }
+
   return (
     <View style={styles.header}>
       <Text style={styles.headerText}>to.</Text>
       <Text style={[styles.headerText, { fontFamily: 'Poppins-SemiBold' }]}>do</Text>
-      <TouchableOpacity style={styles.buttonTheme}>
-        <Text style={styles.buttonTheme}>Change Theme</Text>
+      <TouchableOpacity style={styles.buttonTheme} onPress={handleDarkMode}>
+        <Text style={styles.buttonTheme}>Mudar tema</Text>
       </TouchableOpacity>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
+const stylesLigth = StyleSheet.create({
   header: {
     paddingTop: StatusBar.currentHeight,
     paddingBottom: 44,
@@ -30,7 +44,33 @@ const styles = StyleSheet.create({
   buttonTheme: {
     backgroundColor: "#AAA",
     borderRadius: 5,
-    alignItems: 'center'
+    marginHorizontal: 10
+  },
+  buttonThemeText: {
+    color: "#FFF",
+    fontSize: 12
+  }
+});
+
+
+const stylesDark = StyleSheet.create({
+  header: {
+    paddingTop: StatusBar.currentHeight,
+    paddingBottom: 44,
+    backgroundColor: '#273FAD',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  headerText: {
+    fontSize: 24,
+    color: '#000',
+    fontFamily: 'Poppins-Regular',
+  },
+  buttonTheme: {
+    backgroundColor: "#AAA",
+    borderRadius: 5,
+    marginHorizontal: 10
   },
   buttonThemeText: {
     color: "#FFF",
