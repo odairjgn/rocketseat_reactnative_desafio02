@@ -13,7 +13,7 @@ interface MyTasksListProps {
 }
 
 export function MyTasksList({ tasks, onLongPress, onPress, darkModeState }: MyTasksListProps) {
-  const [styles, setStyles] = useState(darkModeState ? stylesDark : stylesLigth);
+  let styles = darkModeState ? stylesDark : stylesLigth;
 
 
   function FlatListHeaderComponent() {
@@ -113,7 +113,7 @@ const stylesLigth = StyleSheet.create({
 
 const stylesDark = StyleSheet.create({
   header: {
-    color: '#3D3D4D',
+    color: '#FF79C6',
     fontSize: 24,
     fontFamily: 'Poppins-SemiBold'
   },
@@ -131,11 +131,11 @@ const stylesDark = StyleSheet.create({
     width: 16,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#3D3D4D',
+    borderColor: '#FF79C6',
     marginRight: 10
   },
   taskText: {
-    color: '#3D3D4D',
+    color: '#FF79C6',
   },
   taskButtonDone: {
     flex: 1,
@@ -143,7 +143,7 @@ const stylesDark = StyleSheet.create({
     paddingVertical: 12,
     marginBottom: 4,
     borderRadius: 4,
-    backgroundColor: 'rgba(25, 61, 223, 0.1)',
+    backgroundColor: 'rgba(255, 121, 198, 0.1)',
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -151,11 +151,11 @@ const stylesDark = StyleSheet.create({
     height: 16,
     width: 16,
     borderRadius: 8,
-    backgroundColor: '#273FAD',
+    backgroundColor: '#FF79C6',
     marginRight: 10
   },
   taskTextDone: {
-    color: '#A09CB1',
+    color: '#E1E1E6',
     textDecorationLine: 'line-through'
   }
 })

@@ -47,7 +47,7 @@ const stylesLigth = StyleSheet.create({
 
 const stylesDark = StyleSheet.create({
   container: {
-    backgroundColor: '#273FAD',
+    backgroundColor: '#483C67',
   },
   header: {
     paddingBottom: 44,
@@ -58,7 +58,7 @@ const stylesDark = StyleSheet.create({
   },
   headerText: {
     fontSize: 24,
-    color: '#FFF',
+    color: '#E1E1E6',
     fontFamily: 'Poppins-Regular',
   }
 });

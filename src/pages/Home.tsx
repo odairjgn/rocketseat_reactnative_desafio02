@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import { Header } from '../components/Header';
 import { MyTasksList } from '../components/MyTasksList';
@@ -46,7 +47,7 @@ export function Home() {
   }
 
   return (
-    <>
+    <View style={{ backgroundColor: darkMode ? "#1F1F1F" : "#FFF", height: '100%' }}>
       <Header onDarkMode={handleDarkMode} darkModeState={darkMode} />
 
       <TodoInput addTask={handleAddTask} darkModeState={darkMode} />
@@ -57,6 +58,6 @@ export function Home() {
         onLongPress={handleRemoveTask}
         darkModeState={darkMode}
       />
-    </>
+    </View>
   )
 }

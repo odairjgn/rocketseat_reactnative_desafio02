@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, Platform, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 
 import checkIcon from '../assets/icons/Check.png';
@@ -9,8 +9,9 @@ interface TodoInputProps {
 }
 
 export function TodoInput({ addTask, darkModeState }: TodoInputProps) {
+  console.log("Dark mode?", darkModeState);
   const [task, setTask] = useState('');
-  const [styles, setStyles] = useState(darkModeState ? stylesDark : stylesLigth);
+  let styles = darkModeState ? stylesDark : stylesLigth;
 
   function handleAddNewTask() {
     addTask(task);
@@ -26,6 +27,7 @@ export function TodoInput({ addTask, darkModeState }: TodoInputProps) {
         value={task}
         onChangeText={(text) => { setTask(text); }}
         onSubmitEditing={handleAddNewTask}
+        placeholderTextColor={"#A09CB1"}
       />
       <TouchableOpacity
         testID="add-new-task-button"
@@ -52,6 +54,7 @@ const stylesLigth = StyleSheet.create({
   input: {
     flex: 1,
     backgroundColor: '#F5F4F8',
+    color: '#000',
     paddingLeft: 12,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
@@ -81,7 +84,7 @@ const stylesLigth = StyleSheet.create({
 
 const stylesDark = StyleSheet.create({
   inputContainer: {
-    backgroundColor: '#F5F4F8',
+    backgroundColor: '#34313D',
     borderRadius: 5,
     marginTop: -25,
     marginHorizontal: 40,
@@ -91,7 +94,8 @@ const stylesDark = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: '#F5F4F8',
+    backgroundColor: '#34313D',
+    color: '#FFF',
     paddingLeft: 12,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
@@ -109,7 +113,7 @@ const stylesDark = StyleSheet.create({
     elevation: 5
   },
   addButton: {
-    backgroundColor: '#3FAD27',
+    backgroundColor: '#988BC7',
     height: 50,
     paddingHorizontal: 16,
     justifyContent: 'center',
