@@ -11,9 +11,10 @@ export function Header({ onDarkMode, darkModeState }: HeaderProps) {
   const [darkMode, setDarkMode] = useState(darkModeState);
 
   function handleDarkMode() {
-    onDarkMode(!darkMode);
-    setDarkMode(!darkMode);
-    setStyles(darkMode ? stylesDark : stylesLigth);
+    let newstatus = !darkMode;
+    onDarkMode(newstatus);
+    setDarkMode(newstatus);
+    setStyles(newstatus ? stylesDark : stylesLigth);
   }
 
   return (
